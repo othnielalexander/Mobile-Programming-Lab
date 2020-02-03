@@ -1,6 +1,9 @@
+import { DisplayDetailsPage } from './../display-details/display-details.page';
 import {Component} from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import {ActionSheetController} from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +12,27 @@ import {ActionSheetController} from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(public alertController: AlertController, public actionSheetController: ActionSheetController) { }
+  constructor(private router: Router, public alertController: AlertController, public actionSheetController: ActionSheetController) { }
+
+  username = '';
+  password = '';
 
   async showAlert() {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        username: 'username',
+        password: 'password',
+      }
+    };
+
     const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
-      buttons: ['OK']
+      header: 'Details Correctness',
+      subHeader: '',
+      message: 'Please make sure you have entered correct details.',
+      buttons: [{text: 'OK', handler: () => {
+
+        this.router.navigate(['/display-details'], navigationExtras);
+      }}]
     });
     await alert.present();
   }
@@ -50,5 +66,9 @@ export class HomePage {
     });
     await actionSheet.present();
   }
+
+  // see(str:any){
+  //   this.navCtrl.push(str);
+  // }
 
 }
