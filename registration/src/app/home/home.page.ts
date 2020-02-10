@@ -16,12 +16,14 @@ export class HomePage {
 
   username = '';
   password = '';
+  datetime = '';
 
   async showAlert() {
     const navigationExtras: NavigationExtras = {
       state: {
-        username: 'username',
-        password: 'password',
+        username: this.username,
+        password: this.password,
+        datetime: this.datetime
       }
     };
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-display-details',
@@ -8,18 +8,21 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class DisplayDetailsPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
+
+  data: any;
 
   ngOnInit() {
 
-  //   const navigation = this.router.getCurrentNavigation();
-  // const state = navigation.extras.state as {
-  //   username: string,
-  //   password: boolean,
-  // };
-  // this.test = "Username" + state.username + 
-  // "<br /> Password:" + state.password;
-    
-  }
+    this.route.queryParams.subscribe(params =>{
+      if (this.router.getCurrentNavigation().extras.state){
+        this.data = this.router.getCurrentNavigation().extras.state as{
+          username: string;
+          password: string;
+          datetime: string;
+        };
+      }
+    });
 
+  }
 }
