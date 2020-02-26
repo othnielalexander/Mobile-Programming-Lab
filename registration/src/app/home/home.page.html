@@ -1,43 +1,55 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons>
-        <ion-title class='title'>Registration</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title">Registration</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <form>
-        <ion-item lines="full">
-            <ion-label position="floating">Email</ion-label>
-            <ion-input [(ngModel)]="username" type="text" required></ion-input>
-        </ion-item>
+  <form [formGroup]="slideOneForm">
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="text" required></ion-input>
+    </ion-item>
 
-        <ion-item lines="full">
-            <ion-label position="floating">Password</ion-label>
-            <ion-input [(ngModel)]="password" type="password" required></ion-input>
-        </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input
+        formControlName="pass"
+        type="password"
+        [(ngModel)]="pass"
+        required
+      ></ion-input>
+    </ion-item>
 
-        <ion-item lines="full">
-            <ion-label position="floating">Confirm Password</ion-label>
-            <ion-input type="password" required></ion-input>
-        </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
 
-        <ion-item lines="full">
-            <ion-label position="floating">Date Of Birth</ion-label>
-        </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Date Of Birth</ion-label>
+    </ion-item>
 
-        <ion-item lines="full">
-            <ion-datetime value="1990-02-20" placeholder="Select Date"></ion-datetime>
-        </ion-item>
+    <ion-item lines="full">
+      <ion-datetime value="1990-02-20" placeholder="Select Date"></ion-datetime>
+    </ion-item>
 
-        <ion-row>
-            <ion-col>
-                <ion-button type="submit" color="danger" expand="block" (click)="showAlert()">Register</ion-button>
-                <a class="small-text" (click)="presentActionSheet()">Forgot Password?</a>
-            </ion-col>
-        </ion-row>
-
-    </form>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          type="submit"
+          color="danger"
+          expand="block"
+          (click)="showAlert()"
+          >Register</ion-button
+        >
+        <a class="small-text" (click)="presentActionSheet()"
+          >Forgot Password?</a
+        >
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

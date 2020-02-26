@@ -1,25 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router, NavigationExtras } from "@angular/router";
+import { NavParams } from "@ionic/angular";
+import { FormBuilder } from "@angular/forms";
+import { HomePage } from "./../home/home.page";
 
 @Component({
-  selector: 'app-display-details',
-  templateUrl: './display-details.page.html',
-  styleUrls: ['./display-details.page.scss'],
+  selector: "app-display-details",
+  templateUrl: "./display-details.page.html",
+  styleUrls: ["./display-details.page.scss"]
 })
 export class DisplayDetailsPage implements OnInit {
-
-  constructor(private router: Router) { }
+  slideOneForm: any;
+  constructor() {}
 
   ngOnInit() {
-
-  //   const navigation = this.router.getCurrentNavigation();
-  // const state = navigation.extras.state as {
-  //   username: string,
-  //   password: boolean,
-  // };
-  // this.test = "Username" + state.username + 
-  // "<br /> Password:" + state.password;
-    
+    console.log(this.slideOneForm.value);
   }
-
 }
